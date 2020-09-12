@@ -1,0 +1,28 @@
+
+version: '3.2'
+
+services:
+    backend:
+        depends_on:
+            - db
+        build: ./backend
+        volumes: 
+            - ./backend:/app/backend
+        ports:
+            - "80:8000"
+        stdin_open: true
+        tty: true
+        command: bash -c "gunicorn --bind 0.0.0.0:8000 project.wsgi"
+    db:
+        image: postgres
+        environment:
+            POSTGRES_USER: admin
+            POSTGRES_PASSWORD: mypass
+            POSTGRES_DB: project
+        volumes:
+            - project:/var/lib/postgresql/data
+
+volumes:
+    project:
+
+
