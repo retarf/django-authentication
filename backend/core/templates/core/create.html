@@ -1,6 +1,5 @@
-
-<form method="post">
-    <input id="username" type="text">
-    <input id="password" type="passowrd">
-    <input value="Create" type="submit">
+<form action="{% url 'create' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="create"/>
 </form>
