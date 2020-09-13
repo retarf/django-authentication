@@ -33,3 +33,21 @@ def list(request):
     users = User.objects.all()
 
     return render(request, 'core/list.html', {'users': users})
+
+def change(request, pk):
+
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = User.objects.get(pk=pk)
+            user.set_password(password)
+            user.save()
+            return redirect('index')
+    else:
+        user = User.objects.get(pk=pk)
+        form = UserForm(initial={'username': user.username})
+    context = {'form': form, 'pk': pk}
+
+    return render(request, 'core/change.html', context)
