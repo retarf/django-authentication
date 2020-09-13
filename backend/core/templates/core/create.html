@@ -1,4 +1,4 @@
-<form action="{% url 'create' %}" method="post">
+<form action="{% url 'core:create' %}" method="post">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="create"/>

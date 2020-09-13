@@ -1,5 +1,5 @@
 <ul>
     {% for user in users %}
-        <li><a href="{% url 'change' user.id %}">{{user}}</a></li>
+        <li><a href="{% url 'core:change' user.id %}">{{user}}</a></li>
     {% endfor %}
 </ul>

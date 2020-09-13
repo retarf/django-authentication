@@ -1,6 +1,13 @@
+<h1>{{ username }}</h1>
 <ul>
-<li><a href="{% url 'create' %}">Create</a></li>
-<li><a href="{% url 'list' %}">List</a></li>
+    <li>
+        <a href="{% url 'core:create' %}">Create</a>
+    </li>
+    <li>
+        <a href="{% url 'core:list' %}">List</a>
+    </li>
+    <li>
+        <a href="{% url 'core:user_page' pk %}">User page</a>
+    </li>
 </ul>
 </br>
-{{ content }}
